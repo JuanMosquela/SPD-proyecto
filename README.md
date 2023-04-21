@@ -31,47 +31,50 @@ El buzzer suena durante el color rojo repetidamente y durante el amarillo mas de
 #define LED_VERDE1 4
 #define LED_VERDE2 2
 
-void EncendidoApagadoRojo(int timer, int LED);
-void EncendidoApagadoAmarillo(int timer, int LED);
-void EncendidoApagadoVerde(int timer, int LED);
+void EncendidoApagado(int led1, int led2, int timer);
 
-void setup()
-{
-  pinMode(10, OUTPUT);
-  pinMode(6, OUTPUT);
+
+void setup(){
   pinMode(LED_ROJO1, OUTPUT);
   pinMode(LED_ROJO2, OUTPUT);
   pinMode(LED_AMARILLO1, OUTPUT);
   pinMode(LED_AMARILLO2, OUTPUT);
   pinMode(LED_VERDE1, OUTPUT);
   pinMode(LED_VERDE2, OUTPUT);
+
 }
 
 void loop()
 {
-  digitalWrite(LED_ROJO1, HIGH);
-  digitalWrite(LED_ROJO2, HIGH);
-  delay(1000);
-  digitalWrite(LED_ROJO1, LOW);
-  digitalWrite(LED_ROJO2, LOW);
-  delay(1000);
-  tone(10, 1000);
-  delay(1000);
-  noTone(10);
-  delay(1000);
-  tone(6, 1000);
-  delay(1000);
-  noTone(6);
-  delay(1000);
+  EncendidoApagado(LED_ROJO1, LED_ROJO2, 30);
+
+  EncendidoApagado(LED_AMARILLO1, LED_AMARILLO2, 2);
+
+  EncendidoApagado (LED_VERDE1, LED_VERDE2, 1);
 }
 
-void EncendidoApagado (int timer, int LED){
-  digitalWrite(LED_ROJO1, HIGH);
-  digitalWrite(LED_ROJO2, HIGH);
-  delay(1000);
-  digitalWrite(LED_ROJO1, LOW);
-  digitalWrite(LED_ROJO2, LOW);
-  delay(1000);
+void EncendidoApagado(int led1, int led2, int vueltas){
+  digitalWrite(led1, HIGH);
+  digitalWrite(led2, HIGH);
+
+  for (int i = 0; i < vueltas; i++){
+    if (led1 == LED_ROJO1 || led2 == LED_ROJO2){
+        tone(12,500);
+        delay(500);
+        noTone(12);
+        delay(500);
+    } else if (led1 == LED_AMARILLO1 || led2 == LED_AMARILLO2){
+        tone(12,200);
+        delay(1000);
+        noTone(12);
+        delay(1000);
+    } else if (led1 == LED_VERDE1 || led2 == LED_VERDE2){
+      delay(45000);
+    }
+
+  }
+  digitalWrite(led1, LOW);
+  digitalWrite(led2, LOW);
 }
 ```
 
