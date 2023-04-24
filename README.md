@@ -20,8 +20,7 @@ El proyecto sirve para ciclar entre los colores de un semaforo y hacer sonar un 
 
 ## Función principal
 
-Definimos una funcion para cada color y las vamos llamando en loop para encender los led y el buzzer si corresponde
-El buzzer suena durante el color rojo repetidamente y durante el amarillo mas detenidamente
+Definimos una funcion "EncendidoApagado" y la llamamos 3 veces, pasandole como parametro los leds con los cuales queremos que trabaje. La funcion distingue que leds queremos encender y reproduce un sonido si corresponde.
 
 ```C (lenguaje en el que esta escrito)
 #define LED_ROJO1 13
